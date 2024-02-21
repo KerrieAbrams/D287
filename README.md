@@ -24,6 +24,11 @@ The user interface should include the shop name, the product names, and the name
 Add an “About” page to the application to describe your chosen customer’s company to web viewers and include navigation to and from the “About” page and the main screen.
 
 #### Changes:
+>src/resources/templates: created aboutpage.html and added "About Us" content
+
+>java/com.example.demo/controllers: created AboutPageController.java and added a controller class that maps to the aboutpage
+
+>mainscreen.html line 21: added navigation to the aboutpage
 </details>
 
 <details>
