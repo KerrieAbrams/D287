@@ -13,9 +13,9 @@ Customize the HTML user interface for your customer’s application.
 The user interface should include the shop name, the product names, and the names of the parts.
 
 #### Changes:
->mainscreen.html line 14: Updated title to "Just Keyboards"
+> mainscreen.html line 14: Updated title to "Just Keyboards"
 
->mainscreen.html line 19: Updated header to "Just Keyboards"
+> mainscreen.html line 19: Updated header to "Just Keyboards"
 
 </details>
 
@@ -24,11 +24,11 @@ The user interface should include the shop name, the product names, and the name
 Add an “About” page to the application to describe your chosen customer’s company to web viewers and include navigation to and from the “About” page and the main screen.
 
 #### Changes:
->src/resources/templates: created aboutpage.html and added "About Us" content
+> src/resources/templates: created aboutpage.html and added "About Us" content
 
->java/com.example.demo/controllers: created AboutPageController.java and added a controller class that maps to the aboutpage
+> java/com.example.demo/controllers: created AboutPageController.java and added a controller class and method that allows navigation to the aboutpage
 
->mainscreen.html line 21: added navigation to the aboutpage
+> mainscreen.html line 21: added navigation to the aboutpage
 </details>
 
 <details>
@@ -36,9 +36,9 @@ Add an “About” page to the application to describe your chosen customer’s 
 Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
 
 #### Changes:
->BootStrapData.java lines 43-80: manually added 5 different parts to the part repository
+> BootStrapData.java lines 43-80: manually added 5 different parts to the part repository
 
->BootStrapData.java lines 96-107: manually added 5 different products to the product repository
+> BootStrapData.java lines 96-107: manually added 5 different products to the product repository
 </details>
 
 <details>
@@ -49,6 +49,18 @@ Add a “Buy Now” button to your product list. Your “Buy Now” button must 
 •  Display a message that indicates the success or failure of a purchase.
 
 #### Changes:
+
+> src/resources/templates: created buyfail.html
+
+> src/resources/templates: created buysuccess.html
+
+> ProductServiceImpl.java lines 70-77: created a buyByID method that decrements a product inv value by 1
+
+> ProductService.java line 20: defined the buyByID method
+
+> AddProductControllet.java lines 177-188: created a buyproduct controller that calls the buyByID method and returns the appropriate buy response: buyfail.html or buysucces.html
+
+> mainscreen.html line 85: added a "Buy Now" button for products that maps to the buyproduct controller
 </details>
 
 <details>
