@@ -40,7 +40,7 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (productRepository.count()==0) {
+        if (partRepository.count()==0) {
             OutsourcedPart switches = new OutsourcedPart();
             switches.setCompanyName("Just Switches");
             switches.setName("Switches x100");
