@@ -36,6 +36,9 @@ Add an “About” page to the application to describe your chosen customer’s 
 Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
 
 #### Changes:
+>BootStrapData.java lines 43-80: manually added 5 different parts to the part repository
+
+>BootStrapData.java lines 96-107: manually added 5 different products to the product repository
 </details>
 
 <details>
