@@ -173,4 +173,19 @@ public class AddProductController {
         theModel.addAttribute("availparts",availParts);
         return "productForm";
     }
+
+    @GetMapping("/buyproduct")
+    public String buyPart(@RequestParam("productID") int theId, Model theModel){
+        ProductService productService = context.getBean(ProductServiceImpl.class);
+        Product product2=productService.findById(theId);
+        if (product2.getInv() == 0){
+            return "buyfail";
+        }
+        else {
+            productService.buyById(theId);
+            productService.save(product2);
+            return "buysuccess";
+        }
+
+    }
 }
