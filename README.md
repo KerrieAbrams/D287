@@ -24,9 +24,9 @@ The user interface should include the shop name, the product names, and the name
 Add an “About” page to the application to describe your chosen customer’s company to web viewers and include navigation to and from the “About” page and the main screen.
 
 #### Changes:
-> src/resources/templates: created aboutpage.html and added "About Us" content
+> src/main/resources/templates: created aboutpage.html and added "About Us" content
 
-> java/com.example.demo/controllers: created AboutPageController.java and added a controller class and method that allows navigation to the aboutpage
+> src/main/java/com.example.demo/controllers: created AboutPageController.java and added a controller class and method that allows navigation to the aboutpage
 
 > mainscreen.html line 21: added navigation to the aboutpage
 </details>
@@ -73,6 +73,38 @@ Modify the parts to track maximum and minimum inventory by doing the following:
 •  Modify the code to enforce that the inventory is between or at the minimum and maximum value.
 
 #### Changes:
+> Part.java lines 33-36: defined maximum and minimum inventory fields
+
+> Part.java lines 91-97: defined setter and getter methods
+
+> BootStrapData.java lines 50-51, 60-61, 69-70, 78-79, 87,88: modified sample part inventory to include the new fields
+
+> InhousePartForm.html lines 24-28: added form fields for min and max inventory
+
+> OutsourcedPartForm.html lines 25-29: added form fields for min and max inventory
+
+> mainscreen.html lines 40-41: added min and max inventory table headers
+
+> mainscreen.html lines 50-51: added min and max inventory table data
+
+> spring-boot-h2-db102.mv.db: renamed to spring-boot-h2-db103
+
+> application.properties line 6: updated datasource spring-boot-h2-db102 to spring-boot-h2-db103
+
+> src/main/java/com.example.demo/validators: Created ValidInventoryValue.java annotation
+
+> src/main/java/com.example.demo/validators: Created InventoryValueValidator.java class
+
+> ValidInventoryValue.java: defined the constraint annotation that is validated by the InventoryValueValidator class
+
+> InventoryValueValidator.java: defined the validator that accepts a Part object as a parameter and determines if the inventory value is within the assigned maximum and minimum values
+
+> Part.java line 23: applied the new constraint to the Part class 
+
+> InhousePartForm.html line 22: updated the error message code to display all applicable errors for the inv field
+
+> OutsourcedPartForm.html line 23: updated the error message code to display all applicable errors for the inv field
+
 </details>
 
 
