@@ -47,6 +47,8 @@ public class BootStrapData implements CommandLineRunner {
             switches.setInv(900);
             switches.setPrice(50.0);
             switches.setId(158);
+            switches.setMinInv(10);
+            switches.setMaxInv(1000);
             outsourcedPartRepository.save(switches);
 
             OutsourcedPart keycaps = new OutsourcedPart();
@@ -55,6 +57,8 @@ public class BootStrapData implements CommandLineRunner {
             keycaps.setInv(500);
             keycaps.setPrice(45.00);
             keycaps.setId(159);
+            keycaps.setMinInv(10);
+            keycaps.setMaxInv(1000);
             outsourcedPartRepository.save(keycaps);
 
             InhousePart plate = new InhousePart();
@@ -62,6 +66,8 @@ public class BootStrapData implements CommandLineRunner {
             plate.setPartId(160);
             plate.setInv(500);
             plate.setPrice(20.0);
+            plate.setMinInv(20);
+            plate.setMaxInv(2000);
             partRepository.save(plate);
 
             InhousePart keyboardCase = new InhousePart();
@@ -69,6 +75,8 @@ public class BootStrapData implements CommandLineRunner {
             keyboardCase.setPartId(161);
             keyboardCase.setInv(500);
             keyboardCase.setPrice(80.00);
+            keyboardCase.setMinInv(20);
+            keyboardCase.setMaxInv(2000);
             partRepository.save(keyboardCase);
 
             InhousePart pcb = new InhousePart();
@@ -76,6 +84,8 @@ public class BootStrapData implements CommandLineRunner {
             pcb.setId(162);
             pcb.setInv(500);
             pcb.setPrice(30.00);
+            pcb.setMinInv(20);
+            pcb.setMaxInv(2000);
             partRepository.save(pcb);
         }
 
