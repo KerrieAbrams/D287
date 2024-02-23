@@ -119,13 +119,11 @@ Modify the parts to track maximum and minimum inventory by doing the following:
 
 > InventoryValueValidator.java lines 25-41: updated the validator to notify the user whether the inventory is too high or low when adding parts or updating parts
 
-> EnufPartsValidator line 37: Added additional logic to prevent submitting a product with a part that would lower the inventory below the minimum
+> EnufPartsValidator.java line 37: Added additional logic to prevent submitting a product with a part that would lower the inventory below the minimum
 
-> AddProductController lines 150, 170: Updated the add and remove part buttons to increment and decrement the inventory appropriately
+> AddProductController.java lines 109, 158, 191: Added an array that is initialized everytime a product is updated and stores parts that are added to the associate parts
 
-> src/resources/templates: Created notenoughparts.html
-
-> AddProductController lines 142-144: Updated the add button functionality to prevent the user from adding a part with 0 inventory, redirecting them to notenoughparts.html
+> AddProductController.java lines 81-84: After the form is submitted, the inventory values are updated for parts stored in the array
 
 </details>
 

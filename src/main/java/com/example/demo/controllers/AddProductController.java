@@ -32,6 +32,7 @@ public class AddProductController {
     private static Product product1;
     private Product product;
 
+
     @GetMapping("/showFormAddProduct")
     public String showFormAddPart(Model theModel) {
         theModel.addAttribute("parts", partService.findAll());
@@ -52,6 +53,8 @@ public class AddProductController {
     public String submitForm(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model theModel) {
         theModel.addAttribute("product", product);
 
+        /*
+        }*/
         if(bindingResult.hasErrors()){
             ProductService productService = context.getBean(ProductServiceImpl.class);
             Product product2 = new Product();
@@ -75,7 +78,11 @@ public class AddProductController {
         else {
             ProductService repo = context.getBean(ProductServiceImpl.class);
             if(product.getId()!=0) {
-                Product product2 = repo.findById((int) product.getId());
+                for (Part p :theParts) {
+                    p.setInv(p.getInv() - 1);
+                    partService.save(p);
+                }
+                /*Product product2 = repo.findById((int) product.getId());
                 PartService partService1 = context.getBean(PartServiceImpl.class);
                 if(product.getInv()- product2.getInv()>0) {
                     for (Part p : product2.getParts()) {
@@ -83,7 +90,7 @@ public class AddProductController {
                         p.setInv(inv - (product.getInv() - product2.getInv()));
                         partService1.save(p);
                     }
-                }
+                }*/
             }
             else{
                 product.setInv(0);
@@ -99,6 +106,7 @@ public class AddProductController {
         ProductService repo = context.getBean(ProductServiceImpl.class);
         Product theProduct = repo.findById(theId);
         product1=theProduct;
+        theParts=new ArrayList<>();
     //    this.product=product;
         //set the employ as a model attibute to prepopulate the form
         theModel.addAttribute("product", theProduct);
@@ -139,18 +147,15 @@ public class AddProductController {
         if (product1.getName()==null) {
             return "saveproductscreen";
         }
-        if (partService.findById(theID).getInv()==0) {
-            return "notenoughparts";
-        }
         else{
         product1.getParts().add(partService.findById(theID));
         partService.findById(theID).getProducts().add(product1);
         ProductService productService = context.getBean(ProductServiceImpl.class);
         productService.save(product1);
-        partService.findById(theID).setInv(partService.findById(theID).getInv() - 1);
         partService.save(partService.findById(theID));
         theModel.addAttribute("product", product1);
         theModel.addAttribute("assparts",product1.getParts());
+        theParts.add(partService.findById(theID));
         List<Part>availParts=new ArrayList<>();
         for(Part p: partService.findAll()) {
             if (!product1.getParts().contains(p))availParts.add(p);
@@ -163,11 +168,11 @@ public class AddProductController {
     public String removePart(@RequestParam("partID") int theID, Model theModel){
         theModel.addAttribute("product", product);
       //  Product product1=new Product();
+        theParts.remove(partService.findById(theID));
         product1.getParts().remove(partService.findById(theID));
         partService.findById(theID).getProducts().remove(product1);
         ProductService productService = context.getBean(ProductServiceImpl.class);
         productService.save(product1);
-        partService.findById(theID).setInv(partService.findById(theID).getInv() + 1);
         partService.save(partService.findById(theID));
         theModel.addAttribute("product", product1);
         theModel.addAttribute("assparts",product1.getParts());
