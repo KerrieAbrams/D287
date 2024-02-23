@@ -133,6 +133,10 @@ Modify the parts to track maximum and minimum inventory by doing the following:
 Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package.
 
 #### Changes:
+
+> PartTest.java lines 160-167: Created a unit test to test the minimum inventory field
+
+> PartTest.java lines 169-176: Created a unit test to test the maximum inventory field
 </details>
 
 
@@ -141,4 +145,5 @@ Add at least two unit tests for the maximum and minimum fields to the PartTest c
 Remove the class files for any unused validators in order to clean your code.
 
 #### Changes:
+
 </details>
