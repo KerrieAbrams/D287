@@ -139,17 +139,21 @@ public class AddProductController {
         if (product1.getName()==null) {
             return "saveproductscreen";
         }
+        if (partService.findById(theID).getInv()==0) {
+            return "notenoughparts";
+        }
         else{
         product1.getParts().add(partService.findById(theID));
         partService.findById(theID).getProducts().add(product1);
         ProductService productService = context.getBean(ProductServiceImpl.class);
         productService.save(product1);
+        partService.findById(theID).setInv(partService.findById(theID).getInv() - 1);
         partService.save(partService.findById(theID));
         theModel.addAttribute("product", product1);
         theModel.addAttribute("assparts",product1.getParts());
         List<Part>availParts=new ArrayList<>();
-        for(Part p: partService.findAll()){
-            if(!product1.getParts().contains(p))availParts.add(p);
+        for(Part p: partService.findAll()) {
+            if (!product1.getParts().contains(p))availParts.add(p);
         }
         theModel.addAttribute("availparts",availParts);
         return "productForm";}
@@ -163,6 +167,7 @@ public class AddProductController {
         partService.findById(theID).getProducts().remove(product1);
         ProductService productService = context.getBean(ProductServiceImpl.class);
         productService.save(product1);
+        partService.findById(theID).setInv(partService.findById(theID).getInv() + 1);
         partService.save(partService.findById(theID));
         theModel.addAttribute("product", product1);
         theModel.addAttribute("assparts",product1.getParts());

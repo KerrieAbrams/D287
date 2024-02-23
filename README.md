@@ -116,6 +116,17 @@ Modify the parts to track maximum and minimum inventory by doing the following:
 •  Display error messages when adding and updating parts if the inventory is greater than the maximum.
 
 #### Changes:
+
+> InventoryValueValidator.java lines 25-41: updated the validator to notify the user whether the inventory is too high or low when adding parts or updating parts
+
+> EnufPartsValidator line 37: Added additional logic to prevent submitting a product with a part that would lower the inventory below the minimum
+
+> AddProductController lines 150, 170: Updated the add and remove part buttons to increment and decrement the inventory appropriately
+
+> src/resources/templates: Created notenoughparts.html
+
+> AddProductController lines 142-144: Updated the add button functionality to prevent the user from adding a part with 0 inventory, redirecting them to notenoughparts.html
+
 </details>
 
 
