@@ -1,7 +1,5 @@
 
 
-# WESTERN GOVERNOR UNIVERSITY 
-## D287 – JAVA FRAMEWORKS
 ## Kerrie Abrams
 
 
